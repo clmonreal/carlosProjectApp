@@ -14,7 +14,7 @@ const routes: Routes = [
   { path:'about', component:AboutComponent },
   { path:'contact', component:ContactComponent },
   { path:'create', component:CreateComponent },
-  { path:'edit', component:EditComponent },
+  { path:'edit/:id', component:EditComponent },
   { path:'error', component:ErrorComponent },
   { path:'home', component:HomeComponent },
   { path:'list', component:ListComponent },

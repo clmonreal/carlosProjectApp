@@ -28,4 +28,9 @@ export class ListComponent implements OnInit {
       // console.log(this.users);
     });
   }
+
+  userEdit(id:number) {
+    // console.log(id);
+    this.router.navigate(['edit', id]);
+  }
 }
