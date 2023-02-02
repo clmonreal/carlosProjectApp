@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  apiPath:string = 'http://reqres.in/';
+  apiPath:string = 'https://reqres.in/';
 
   constructor(private http:HttpClient) { }
 
