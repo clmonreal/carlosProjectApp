@@ -12,7 +12,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let user of users.data" (click)="userEdit(user.id)">
+            <tr class="user-details" *ngFor="let user of users.data" (click)="userEdit(user.id)">
                 <th scope="row">{{user.id}}</th>
                 <td>{{user.first_name}}</td>
                 <td>{{user.last_name}}</td>
