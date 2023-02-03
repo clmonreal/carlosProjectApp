@@ -1,0 +1,15 @@
+@import 'variables';
+
+.container {
+    margin-bottom: 16rem;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    
+    .buttons-group {
+        display: flex;
+        gap: 2rem;
+    }
+}

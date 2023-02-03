@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ILogin } from 'src/app/models/login.interface';
-import { IResponse } from 'src/app/models/response.interface';
+import { ILoginResponse } from 'src/app/models/response.interface';
 import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
@@ -31,10 +31,13 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(form:ILogin) {
-    this.api.loginByEmail(form).subscribe(data => {
-      let dataResponse:IResponse = data;
+    this.api.loginByEmail(form).subscribe({
+      next: data => {
+        let dataResponse: ILoginResponse = data;
         localStorage.setItem('token', dataResponse.token)
         this.router.navigate(['home']);
+      },
+      error: err => alert(err.error?.error)
     });
   }
 }

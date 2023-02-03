@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IUser } from 'src/app/models/user.interface';
 import { IUserData, IUserSupport } from 'src/app/models/usersList.interface';
 import { ApiService } from 'src/app/services/api/api.service';
 
@@ -11,26 +10,43 @@ import { ApiService } from 'src/app/services/api/api.service';
   styleUrls: ['./edit.component.scss']
 })
 export class EditComponent implements OnInit {
-  user: IUserData[];
+  userData: IUserData;
+  userId:string;
   formEdit = new FormGroup({
-    name:new FormControl(''),
-    job:new FormControl(''),
-    updatedAt: new FormControl('')
+    first_name:new FormControl(''),
+    last_name:new FormControl(''),
+    email: new FormControl('')
   });
 
   constructor(private activatedRoute:ActivatedRoute, private router:Router, private api:ApiService) {
-    this.user = {} as IUserData[];
   }
 
   ngOnInit(): void {
-    let userId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.api.getUser(userId).subscribe(response => {
-      console.log(response.data);
-      this.user = response.data;
-      // this.formEdit.setValue({
-      //   'name':this.user.name,
-      //   'job':this.user.job,
-      // })
+    this.userId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.api.getUser(this.userId).subscribe(response => {
+      this.userData = response.data
+      this.formEdit.setValue({
+        'first_name': this.userData.first_name,
+        'last_name': this.userData.last_name,
+        'email': this.userData.email,
+      })
+      // console.log(this.formEdit.value);
     });
+  }
+
+  putForm(form) {
+    console.log(form.value);
+    this.api.putUser(this.userId, form).subscribe(response => {
+    console.log(response);
+    });
+    this.router.navigate(['list']);
+  }
+
+  deleteUser() {
+    alert('User deleted');
+    this.api.deleteUser(this.userId).subscribe(response => {
+      console.log(response);
+    });
+    this.router.navigate(['list']);
   }
 }

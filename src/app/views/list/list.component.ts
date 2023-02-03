@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IUserData, IUserInformation, IUserSupport } from 'src/app/models/usersList.interface';
+import { IPaginatedResponse } from 'src/app/models/reponse.interface';
+import { IUserData, IUserSupport } from 'src/app/models/usersList.interface';
 import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
@@ -9,10 +10,10 @@ import { ApiService } from 'src/app/services/api/api.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  users:IUserInformation<IUserData,IUserSupport>;
+  users:IPaginatedResponse<IUserData,IUserSupport>;
   
   constructor(private api:ApiService, private router:Router) { 
-    this.users = {} as IUserInformation<IUserData,IUserSupport>;
+    this.users = {} as IPaginatedResponse<IUserData,IUserSupport>;
   }
 
   ngOnInit(): void {

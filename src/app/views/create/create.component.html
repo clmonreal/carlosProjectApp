@@ -1,1 +1,29 @@
-<p>create works!</p>
+<app-header></app-header>
+<div class="container">
+    <h2>Create a new user</h2>
+    <form>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">First Name</label>
+            <input type="text" class="form-control" formControlName="first_name" placeholder="Introduce a first username">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Last Name</label>
+            <input type="text" class="form-control" formControlName="last_name" placeholder="Introduce a last username">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Email Address</label>
+            <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="first_name" placeholder="Introduce a email address" formControlName="email">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div><br>
+        <hr>
+        <div class="buttons">
+            <div class="buttons-group">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+            <div class="buttons-group">
+                <button type="button" class="btn btn-secondary" routerLink="/list">Go Back</button>
+                <button type="button" class="btn btn-outline-dark" routerLink="/home">Return to Home</button>
+            </div>
+        </div>
+    </form>
+</div><app-footer></app-footer>

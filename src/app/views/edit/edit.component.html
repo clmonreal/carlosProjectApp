@@ -1,5 +1,30 @@
 <app-header></app-header>
-    <div class="container">
-
-    </div>
+<div class="container">
+    <form [formGroup]="formEdit" (ngSubmit)="putForm(formEdit)">
+        <div class="mb-3">
+            <label for="exampleInputEmail1">First Name</label>
+            <input type="text" class="form-control" formControlName="first_name">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1">Last Name</label>
+            <input type="text" class="form-control" formControlName="last_name">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1">Email Address</label>
+            <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="first_name" formControlName="email">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div><br>
+        <hr>
+        <div class="buttons">
+            <div class="buttons-group">
+                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="button" class="btn btn-danger" (click)="deleteUser()">Delete</button>
+            </div>
+            <div class="buttons-group">
+                <button type="button" class="btn btn-secondary" routerLink="/list">Go Back</button>
+                <button type="button" class="btn btn-outline-dark" routerLink="/home">Return to Home</button>
+            </div>
+        </div>
+    </form>
+</div>
 <app-footer></app-footer>
