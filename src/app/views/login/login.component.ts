@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   onLogin(form:ILogin) {
     this.api.loginByEmail(form).subscribe({
       next: data => {
-        this.alerts.showSuccess('Successfully logged in', 'Done');
+        this.alerts.showSuccess('Successfully logged in', 'Done!');
         let dataResponse: ILoginResponse = data;
         localStorage.setItem('token', dataResponse.token)
         this.router.navigate(['home']);

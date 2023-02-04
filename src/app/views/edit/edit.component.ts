@@ -32,29 +32,26 @@ export class EditComponent implements OnInit {
         'last_name': this.userData.last_name,
         'email': this.userData.email,
       })
-      // console.log(this.formEdit.value);
     });
   }
 
   putForm(form) {
-    console.log(form.value);
     this.api.putUser(this.userId, form).subscribe({
-      // console.log(response);
       next: data => {
-        this.alerts.showSuccess('Data modified successfully', 'Done');
+        console.log(data);
+        this.alerts.showSuccess('Data modified successfully', 'Done!');
         this.router.navigate(['list']);
       },
       error: err => {
+        console.log(err);
         this.alerts.showError('There was an error modifying data, try again', 'Error');
       }  
     });
   }
 
   deleteUser() {
-    // alert('User deleted');
     this.api.deleteUser(this.userId).subscribe({
       next: data => {
-        console.log(data);
         this.alerts.showSuccess('Data deleted successfully', 'Done!');
         this.router.navigate(['list']);
       },

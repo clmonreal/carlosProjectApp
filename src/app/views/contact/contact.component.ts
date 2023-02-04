@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlertsService } from 'src/app/services/alerts/alerts.service';
 
 @Component({
   selector: 'app-contact',
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class ContactComponent {
 
+  constructor(private alerts:AlertsService, private router:Router) {
+    
+  }
+
+  showMessage() {
+    this.alerts.showSuccess('The query has been sent', 'Done!');
+    this.router.navigate(['home']);
+  }
 }
