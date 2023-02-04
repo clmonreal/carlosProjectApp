@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IResponse } from 'src/app/models/reponse.interface';
 import { IUserData, IUserSupport } from 'src/app/models/usersList.interface';
+import { AlertsService } from 'src/app/services/alerts/alerts.service';
 import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
@@ -18,7 +20,7 @@ export class EditComponent implements OnInit {
     email: new FormControl('')
   });
 
-  constructor(private activatedRoute:ActivatedRoute, private router:Router, private api:ApiService) {
+  constructor(private activatedRoute:ActivatedRoute, private router:Router, private api:ApiService, private alerts:AlertsService) {
   }
 
   ngOnInit(): void {
@@ -36,17 +38,30 @@ export class EditComponent implements OnInit {
 
   putForm(form) {
     console.log(form.value);
-    this.api.putUser(this.userId, form).subscribe(response => {
-    console.log(response);
+    this.api.putUser(this.userId, form).subscribe({
+      // console.log(response);
+      next: data => {
+        this.alerts.showSuccess('Data modified successfully', 'Done');
+        this.router.navigate(['list']);
+      },
+      error: err => {
+        this.alerts.showError('There was an error modifying data, try again', 'Error');
+      }  
     });
-    this.router.navigate(['list']);
   }
 
   deleteUser() {
-    alert('User deleted');
-    this.api.deleteUser(this.userId).subscribe(response => {
-      console.log(response);
+    // alert('User deleted');
+    this.api.deleteUser(this.userId).subscribe({
+      next: data => {
+        console.log(data);
+        this.alerts.showSuccess('Data deleted successfully', 'Done!');
+        this.router.navigate(['list']);
+      },
+      error: err => {
+        this.alerts.showError('There was an error deleting data, try again', 'Error');
+      }  
+
     });
-    this.router.navigate(['list']);
   }
 }

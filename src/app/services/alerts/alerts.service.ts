@@ -8,11 +8,11 @@ export class AlertsService {
 
   constructor(private toast:ToastrService) { }
 
-  showSuccess(text:string, title:string) {
-    this.toast.success(text, title);
+  showSuccess(message:string, title:string) {
+    this.toast.success(message, title);
   }
 
-  showError(text, title) {
-    this.toast.error(text, title);
+  showError(message, title) {
+    this.toast.error(message, title);
   }
 }
