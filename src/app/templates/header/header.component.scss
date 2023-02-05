@@ -19,3 +19,16 @@
         display: flex;
     }
 }
+
+@include desktop {
+    .navigation-bar {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        
+        .navigation-bar-group {
+            display: flex;
+        }
+    }
+
+}
