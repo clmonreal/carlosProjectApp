@@ -66,7 +66,6 @@ h1, p {
 
 
 .loader {
-    // position: relative;
     margin: auto;
     box-sizing: border-box;
     width: 200px;
@@ -104,16 +103,16 @@ h1, p {
     50% { opacity: 1 }
   }
 
-.fadeInDown {
-  -webkit-animation-name: fadeInDown;
-  animation-name: fadeInDown;
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
   -webkit-animation-duration: 2s;
   animation-duration: 2s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
 
-@-webkit-keyframes fadeInDown {
+@-webkit-keyframes fadeInUp {
   0% {
     opacity: 0;
     -webkit-transform: translate3d(0, 100%, 0);
@@ -126,7 +125,7 @@ h1, p {
   }
 }
 
-@keyframes fadeInDown {
+@keyframes fadeInUp {
   0% {
     opacity: 0;
     -webkit-transform: translate3d(0, 100%, 0);
