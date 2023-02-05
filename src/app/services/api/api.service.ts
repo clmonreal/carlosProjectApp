@@ -14,11 +14,6 @@ export class ApiService {
 
   constructor(private http:HttpClient) { }
 
-  loginByEmail(form:ILogin):Observable<ILoginResponse> {
-    let direction = this.apiPath+"login";
-    return this.http.post<ILoginResponse>(direction, form);
-  }
-
   getUsersList(page:number, per_page:number):Observable<IPaginatedResponse<IUserData,IUserSupport>> {
     let direction = this.apiPath+"users?page="+page+"&per_page="+per_page;
     return this.http.get<IPaginatedResponse<IUserData,IUserSupport>>(direction);

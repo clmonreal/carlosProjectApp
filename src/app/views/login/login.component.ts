@@ -5,6 +5,7 @@ import { ILogin } from 'src/app/models/login.interface';
 import { ILoginResponse } from 'src/app/models/response.interface';
 import { AlertsService } from 'src/app/services/alerts/alerts.service';
 import { ApiService } from 'src/app/services/api/api.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
   errorStatus:boolean = false;
   errorMessage:any = '';
 
-  constructor(private api:ApiService, private router:Router, private alerts:AlertsService) { }
+  constructor(private api:ApiService, private auth:AuthService, private router:Router, private alerts:AlertsService) { }
 
   ngOnInit():void {
     this.checkLocalStorage();
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(form:ILogin) {
-    this.api.loginByEmail(form).subscribe({
+    this.auth.loginByEmail(form).subscribe({
       next: data => {
         this.alerts.showSuccess('Successfully logged in', 'Done!');
         let dataResponse: ILoginResponse = data;
