@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'app-header',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   title:string = 'CARLOG APP';
+
+  constructor(private api:ApiService) {}
+
+  onLogout() {
+  }
 }
