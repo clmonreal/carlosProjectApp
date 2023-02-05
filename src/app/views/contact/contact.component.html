@@ -1,8 +1,29 @@
 <app-header></app-header>
 <div class="container">
     <h1>Contact</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita doloribus dignissimos soluta sint non illum necessitatibus alias sed facilis eum minima vel reprehenderit, impedit ipsum assumenda. Architecto dolorum impedit voluptatibus.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita doloribus dignissimos soluta sint non illum necessitatibus alias sed facilis eum minima vel reprehenderit, impedit ipsum assumenda. Architecto dolorum impedit voluptatibus.</p>
+    <p>If you have any question or suggestion, do not hesitate to contact us. </p>
+    <div class="form-image-section fadeInDown">
+        <div class="image-container">
+            <img class="contact-image" src="../../../assets/contactIcon.png" alt="Form Image">
+            <img class="frontal-contact-image" src="../../../assets/frontalContactIcon.png" alt="Form Image">
+        </div>
+        <div class="form-section">
+            <form class="form">
+                <div class="mb-3">
+                    <label class="form-label" for="name">Name</label>
+                    <input class="form-control" type="text" placeholder="Introduce your name">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input class="form-control" type="email" placeholder="Introduce your email">
+                </div>        
+                <div class="mb-3">
+                    <label class="form-label">Message</label>
+                    <textarea class="form-control"></textarea>
+                </div>
+            </form>
+        </div>
+    </div>
     <hr>
     <div class="buttons">
         <button type="submit" class="btn btn-primary" (click)="showMessage()">Send</button>
