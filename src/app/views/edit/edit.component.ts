@@ -35,8 +35,8 @@ export class EditComponent implements OnInit {
     });
   }
 
-  putForm(form) {
-    this.api.putUser(this.userId, form).subscribe({
+  updateUser() {
+    this.api.putUser(this.userId, this.formEdit.getRawValue()).subscribe({
       next: data => {
         console.log(data);
         this.alerts.showSuccess('Data modified successfully', 'Done!');

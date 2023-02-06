@@ -1,7 +1,7 @@
 <app-header></app-header>
 <div class="container">
     <h1>Edit User</h1>
-    <form [formGroup]="formEdit" (ngSubmit)="putForm(formEdit)">
+    <form [formGroup]="formEdit">
         <div class="mb-3">
             <label for="exampleInputEmail1">First Name</label>
             <input type="text" class="form-control" formControlName="first_name">
@@ -18,7 +18,7 @@
         <hr>
         <div class="buttons">
             <div class="buttons-group">
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="button" class="btn btn-primary" (click)="updateUser()">Update</button>
                 <button type="button" class="btn btn-danger" (click)="deleteUser()">Delete</button>
             </div>
             <div class="buttons-group">
