@@ -19,16 +19,13 @@ export class CreateComponent {
 
   constructor(private alerts:AlertsService, private router:Router, private api:ApiService) {}
 
-  putForm(form) {
-    console.log(form.value);
-    this.api.postUser(form).subscribe({
+  putForm() {
+    this.api.postUser(this.formCreate.getRawValue()).subscribe({
       next: data => {
-        console.log(data);
         this.alerts.showSuccess('User created successfully', 'Done!');
         this.router.navigate(['list']);
       },
       error: err => {
-        console.log(err);
         this.alerts.showError('There was an error creating the user, try again', 'Error');
       }  
     });

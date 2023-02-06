@@ -38,12 +38,10 @@ export class EditComponent implements OnInit {
   updateUser() {
     this.api.putUser(this.userId, this.formEdit.getRawValue()).subscribe({
       next: data => {
-        console.log(data);
         this.alerts.showSuccess('Data modified successfully', 'Done!');
         this.router.navigate(['list']);
       },
       error: err => {
-        console.log(err);
         this.alerts.showError('There was an error modifying data, try again', 'Error');
       }  
     });
@@ -58,7 +56,6 @@ export class EditComponent implements OnInit {
       error: err => {
         this.alerts.showError('There was an error deleting data, try again', 'Error');
       }  
-
     });
   }
 }
