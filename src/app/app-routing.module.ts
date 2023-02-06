@@ -1,31 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Authguard } from './services/auth/auth.guard';
-import { AboutComponent } from './views/about/about.component';
-import { ContactComponent } from './views/contact/contact.component';
-import { CreateComponent } from './views/create/create.component';
-import { EditComponent } from './views/edit/edit.component';
+import { AuthLoadGuard } from './services/auth/auth.guard';
 import { ErrorComponent } from './views/error/error.component';
-import { HomeComponent } from './views/home/home.component';
-import { ListComponent } from './views/list/list.component';
 import { LoginComponent } from './views/login/login.component';
 
 const routes: Routes = [
   { path:'', redirectTo:'home', pathMatch:'full' },
-  { path:'about',  canActivate: [Authguard], component:AboutComponent },
-  { path:'contact', canActivate: [Authguard],  component:ContactComponent },
-  { path:'create', canActivate: [Authguard],  component:CreateComponent },
-  { path:'edit/:id', canActivate: [Authguard],  component:EditComponent },
-  { path:'home', canActivate: [Authguard],  component:HomeComponent },
-  { path:'list', canActivate: [Authguard],  component:ListComponent },
+  { path:'about',  canActivate: [AuthLoadGuard], loadChildren: () => import('../app/views/about/about.module').then(m => m.AboutModule) },
+  { path:'contact',  canActivate: [AuthLoadGuard], loadChildren: () => import('../app/views/contact/contact.module').then(m => m.ContactModule) },
+  { path:'create',  canActivate: [AuthLoadGuard], loadChildren: () => import('../app/views/create/create.module').then(m => m.CreateModule) },
+  { path:'edit/:id',  canActivate: [AuthLoadGuard], loadChildren: () => import('../app/views/edit/edit.module').then(m => m.EditModule) },
+  { path:'home',  canActivate: [AuthLoadGuard], loadChildren: () => import('../app/views/home/home.module').then(m => m.HomeModule) },
+  { path:'list',  canActivate: [AuthLoadGuard], loadChildren: () => import('../app/views/list/list.module').then(m => m.ListModule) },
   { path:'login', component:LoginComponent },
-  { path:'**', component:ErrorComponent },
+  { path:'**', component:ErrorComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [Authguard]
+  providers: [AuthLoadGuard]
 })
 export class AppRoutingModule { }
-export const routingComponents = [AboutComponent, ContactComponent, CreateComponent, EditComponent, ErrorComponent, HomeComponent, ListComponent, LoginComponent]
+export const routingComponents = [ErrorComponent, LoginComponent]
