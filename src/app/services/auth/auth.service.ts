@@ -8,12 +8,22 @@ import { ILoginResponse } from 'src/app/models/response.interface';
   providedIn: 'root'
 })
 export class AuthService {
-  apiPath:string = 'https://reqres.in/api/';
+  apiPath: string = 'https://reqres.in/api/';
+  token: string;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  loginByEmail(form:ILogin):Observable<ILoginResponse> {
-    let direction = this.apiPath+"login";
+  loginByEmail(form: ILogin): Observable<ILoginResponse> {
+    let direction = this.apiPath + "login";
     return this.http.post<ILoginResponse>(direction, form);
+  }
+
+  get isLogged() {
+    this.token = localStorage.getItem('token');
+    return !!this.token;
+  }
+
+  logOut() {
+    localStorage.removeItem('token');
   }
 }
