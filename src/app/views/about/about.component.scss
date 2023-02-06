@@ -59,8 +59,13 @@
     }
     .user-opinion {
         margin: 1rem;
-
         @include grid(2, 2rem);
+
+        &:hover {
+          background-color: $hoverGray;
+          transform: translateY(-4px);  
+          transition: .4s;
+        }
     }
     
     @include tablet {
@@ -71,7 +76,9 @@
             width: 50%;
         }
     }
-}
+
+    
+  }
 
 .loader {
 //   width: 32px;
