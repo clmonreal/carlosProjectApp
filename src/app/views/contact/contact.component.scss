@@ -5,10 +5,12 @@ h1, p {
   text-align: center;
 }
 
-.buttons {
+.home-button {
+  text-align: right;
+  
+  .right-button {
     margin-bottom: 2rem;
-    display: flex;
-    justify-content: space-between;
+  }
 }
 
 .form-image-section {
@@ -34,6 +36,11 @@ h1, p {
     
         .form {
             padding: 2rem;
+
+            .error-message {
+              color: $red;
+              text-align: left;
+            }
         }
     }
 }

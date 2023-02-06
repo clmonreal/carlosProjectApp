@@ -8,26 +8,35 @@
             <img class="frontal-contact-image" src="../../../assets/frontalContactIcon.png" alt="Form Image">
         </div>
         <div class="form-section">
-            <form class="form">
+            <form class="form" [formGroup]="formCreate" (ngSubmit)="sendRequest()" novalidate>
                 <div class="mb-3">
                     <label class="form-label" for="name">Name</label>
-                    <input class="form-control" type="text" placeholder="Introduce your name">
+                    <input class="form-control" type="text" formControlName="name" placeholder="Introduce your name">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Email</label>
-                    <input class="form-control" type="email" placeholder="Introduce your email">
+                    <input class="form-control" type="email" formControlName="email" placeholder="Introduce your email">
                 </div>        
                 <div class="mb-3">
                     <label class="form-label">Message</label>
-                    <textarea class="form-control"></textarea>
+                    <textarea class="form-control" formControlName="message"></textarea>
                 </div>
+                <div *ngIf="(formCreate.get('name').errors && formCreate.get('name').dirty) ||
+                formCreate.get('email').errors && formCreate.get('email').dirty ||
+                formCreate.get('message').errors && formCreate.get('message').dirty">
+                <p class="error-message" *ngIf="formCreate.get('name').hasError('required') ||
+                formCreate.get('email').hasError('required') ||
+                formCreate.get('message').hasError('required')">Fill in all the fields is necessary.</p>
+                <p class="error-message" *ngIf="formCreate.get('email').hasError('required') ||
+                formCreate.get('email').hasError('email')">Correct email format is necessary.</p>
+                </div>
+                <button type="submit" class="btn btn-primary" [disabled]="formCreate.invalid">Send</button>
             </form>
         </div>
     </div>
     <hr>
-    <div class="buttons">
-        <button type="submit" class="btn btn-primary" (click)="showMessage()">Send</button>
-        <button class="btn btn-outline-dark" routerLink="/home">Return to Home</button>
+    <div class="home-button">
+        <button type="button" class="btn btn-outline-dark right-button" routerLink="/home">Return to Home</button>
     </div>
 </div>
 <app-footer></app-footer>
