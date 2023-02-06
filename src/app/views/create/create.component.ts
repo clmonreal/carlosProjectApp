@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IUserData } from 'src/app/models/usersList.interface';
 import { AlertsService } from 'src/app/services/alerts/alerts.service';
@@ -11,17 +11,19 @@ import { ApiService } from 'src/app/services/api/api.service';
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent {
-  formCreate = new FormGroup({
-    first_name:new FormControl(''),
-    last_name:new FormControl(''),
-    email: new FormControl('')
-  });
-
-  constructor(private alerts:AlertsService, private router:Router, private api:ApiService) {}
+  formCreate: FormGroup;
+  
+  constructor(private alerts:AlertsService, private router:Router, private api:ApiService, private formbuilder:FormBuilder) {
+    this.formCreate = this.formbuilder.group({
+      first_name:new FormControl('', [Validators.required]),
+      last_name:new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email])
+    });
+  }
 
   putForm() {
     this.api.postUser(this.formCreate.getRawValue()).subscribe({
-      next: data => {
+      next: data => {       
         this.alerts.showSuccess('User created successfully', 'Done!');
         this.router.navigate(['list']);
       },

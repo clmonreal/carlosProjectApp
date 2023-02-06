@@ -1,24 +1,32 @@
 <app-header></app-header>
 <div class="container">
     <h2>Create new user</h2>
-    <form [formGroup]="formCreate" (ngSubmit)="putForm()">
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">First Name</label>
-            <input type="text" class="form-control" formControlName="first_name" placeholder="Introduce a first username">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Last Name</label>
-            <input type="text" class="form-control" formControlName="last_name" placeholder="Introduce a last username">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Email Address</label>
-            <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="first_name" placeholder="Introduce an email address" formControlName="email">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-        </div><br>
+    <form [formGroup]="formCreate" (ngSubmit)="putForm()" novalidate>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">First Name</label>
+                <input type="text" class="form-control" formControlName="first_name" placeholder="Introduce a first username">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Last Name</label>
+                <input type="text" class="form-control" formControlName="last_name" placeholder="Introduce a last username">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Email Address</label>
+                <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="first_name" placeholder="Introduce an email address" formControlName="email">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div><br>
+            <div *ngIf="(formCreate.get('first_name').errors && formCreate.get('first_name').dirty) ||
+            formCreate.get('last_name').errors && formCreate.get('last_name').dirty ||
+            formCreate.get('email').errors && formCreate.get('email').dirty">
+                <p class="error-message" *ngIf="formCreate.get('first_name').hasError('required') ||
+                formCreate.get('last_name').hasError('required') ||
+                formCreate.get('email').hasError('required')">Fill in all the fields is necessary.</p>
+                <p class="error-message" *ngIf="formCreate.get('email').hasError('email')">Correct email format is necessary.</p>
+            </div>
         <hr>
         <div class="buttons">
             <div class="buttons-group">
-                <button type="submit" class="btn btn-primary">Add</button>
+                <button type="submit" class="btn btn-primary" [disabled]="formCreate.invalid">Add</button>
             </div>
             <div class="buttons-group">
                 <button type="button" class="btn btn-secondary" routerLink="/list">Go Back</button>
