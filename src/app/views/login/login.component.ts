@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ILogin } from 'src/app/models/login.interface';
-import { ILoginResponse } from 'src/app/models/response.interface';
+import { ILogin, ILoginResponse } from 'src/app/models/login.interface';
 import { AlertsService } from 'src/app/services/alerts/alerts.service';
 import { ApiService } from 'src/app/services/api/api.service';
 import { AuthService } from 'src/app/services/auth/auth.service';

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IResponse } from 'src/app/models/reponse.interface';
-import { IUserData, IUserSupport } from 'src/app/models/usersList.interface';
+import { IUserData} from 'src/app/models/usersList.interface';
 import { AlertsService } from 'src/app/services/alerts/alerts.service';
 import { ApiService } from 'src/app/services/api/api.service';
 

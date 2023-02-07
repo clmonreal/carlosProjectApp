@@ -3,8 +3,7 @@ import { ILogin } from 'src/app/models/login.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IUserData, IUserSupport } from 'src/app/models/usersList.interface';
-import { IPaginatedResponse, IResponse } from 'src/app/models/reponse.interface';
-import { ILoginResponse } from 'src/app/models/response.interface';
+import { IPaginatedResponse, IResponse } from 'src/app/models/response.interface';
 
 @Injectable({
   providedIn: 'root'

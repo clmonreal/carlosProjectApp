@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IPaginatedResponse } from 'src/app/models/reponse.interface';
+import { IPaginatedResponse } from 'src/app/models/response.interface';
 import { IUserData, IUserSupport } from 'src/app/models/usersList.interface';
 import { ApiService } from 'src/app/services/api/api.service';
 
@@ -26,12 +26,10 @@ export class ListComponent implements OnInit {
         user.email = item?.email;
         return user;
       });
-      // console.log(this.users);
     });
   }
 
   userEdit(id:number) {
-    // console.log(id);
     this.router.navigate(['edit', id]);
   }
 }
