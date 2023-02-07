@@ -12,7 +12,7 @@ const routes: Routes = [
   { path:'edit/:id',  canActivate: [AuthLoadGuard], loadChildren: () => import('../app/views/edit/edit.module').then(m => m.EditModule) },
   { path:'home',  canActivate: [AuthLoadGuard], loadChildren: () => import('../app/views/home/home.module').then(m => m.HomeModule) },
   { path:'list',  canActivate: [AuthLoadGuard], loadChildren: () => import('../app/views/list/list.module').then(m => m.ListModule) },
-  { path:'login', component:LoginComponent },
+  { path:'login', loadChildren: () => import('../app/views/login/login.module').then(m => m.LoginModule) },
   { path:'**', component:ErrorComponent }
 ];
 
@@ -22,4 +22,4 @@ const routes: Routes = [
   providers: [AuthLoadGuard]
 })
 export class AppRoutingModule { }
-export const routingComponents = [ErrorComponent, LoginComponent]
+export const routingComponents = [ErrorComponent]
