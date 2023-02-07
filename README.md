@@ -3,8 +3,8 @@ En este proyecto hemos simulado la creación de un sitio web llamado **Carlog Ap
 
 <br>
 <p align="center">
-  <a href="https://carlosprojectapplication.netlify.app" target="blank">
-   <img align="center" src="https://clmonreal.github.io/carlosProjectApp/ proyecto-44c5f5?style=for-the-badge" alt="enlace proyecto" height="30px" width="160px" />
+  <a href="https://clmonreal.github.io/carlosProjectApp/" target="blank">
+   <img align="center" src="https://img.shields.io/badge/enlace proyecto-44c5f5?style=for-the-badge" alt="enlace proyecto" height="30px" width="160px" />
   </a>
 </p>
 </br>
