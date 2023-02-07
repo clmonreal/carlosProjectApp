@@ -1,12 +1,24 @@
 @import 'variables';
+@import 'mixins';
 
 .container {
     margin-bottom: 16rem;
 }
 
 .buttons {
-    display: flex;
-    justify-content: space-between;
+
+    .nav-buttons {
+        margin-top: 1rem;
+    }
+
+    @include mobile {
+        display: flex;
+        justify-content: space-between;
+
+        .nav-buttons {
+            margin-top: 0;
+        }
+    }
     
     .buttons-group {
         display: flex;
